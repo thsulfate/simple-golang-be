@@ -15,6 +15,7 @@ type Response struct {
 	UUID      string `json:"uuid"`
 	Hostname  string `json:"hostname"`
 	Timestamp string `json:"timestamp"`
+ ClientIP  string `json: "clientip"`
 }
 
 // HealthCheckResponse struct to hold the health check status
@@ -46,6 +47,7 @@ func uuidHandler(w http.ResponseWriter, r *http.Request) {
 		UUID:      id.String(),
 		Hostname:  hostname,
 		Timestamp: time.Now().In(loc).Format("2006-01-02 15:04:05"),
+  ClientIP:  r.RemoteAddr
 	}
 
 	// Marshal the response into JSON
